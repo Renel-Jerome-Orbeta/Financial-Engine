@@ -1,4 +1,4 @@
-#Financial Time-Series Analytics & Backtesting Engine
+# Financial Time-Series Analytics & Backtesting Engine
 
 A production-grade, high-performance quantitative finance analytics and backtesting engine built with **Python**, **Polars**, **FastAPI**, **Docker**, **Redis**, and **Streamlit**. 
 
@@ -6,7 +6,7 @@ Designed with modular architecture and vectorized computation principles to simu
 
 ---
 
-##Key Features
+## Key Features
 
 - **Vectorized Data Engine:** Built on **Polars** and **DuckDB** for blazing-fast columnar time-series transformations and SQL querying over Apache Parquet files.
 - **Quantitative Backtesting Pipeline:** Simulates dual moving average (EMA) crossover strategies incorporating realistic friction modeling (**5 bps transaction fees** and **1 bp slippage**).
@@ -17,7 +17,7 @@ Designed with modular architecture and vectorized computation principles to simu
 
 ---
 
-##Tech Stack
+## Tech Stack
 
 - **Data Processing & Analytics:** Polars, DuckDB, PyArrow
 - **Backend API & Caching:** FastAPI, Uvicorn, Redis
@@ -27,7 +27,7 @@ Designed with modular architecture and vectorized computation principles to simu
 
 ---
 
-##Project Architecture
+## Project Architecture
 
 ```text
 financial-engine/
