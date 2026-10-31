@@ -1,11 +1,15 @@
 from fastapi.testclient import TestClient
 from api import app
 
+# Initialize FastAPI TestClient for mock HTTP requests
 client = TestClient(app)
 
 
 def test_health_check():
-    """Verify the health check endpoint returns online status."""
+    """
+    Verifies the root health check endpoint returns an online status 
+    and reports engine availability.
+    """
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
@@ -14,7 +18,10 @@ def test_health_check():
 
 
 def test_backtest_endpoint_valid_payload():
-    """Verify the /backtest endpoint processes valid requests successfully."""
+    """
+    Verifies that the POST /backtest endpoint successfully processes 
+    valid user payloads and returns structured performance metrics.
+    """
     payload = {
         "fast_span": 50,
         "slow_span": 200,
@@ -22,15 +29,12 @@ def test_backtest_endpoint_valid_payload():
     }
     response = client.post("/backtest", json=payload)
     
-    # If data exists, it should return 200 with structured results
     if response.status_code == 200:
         res_json = response.json()
-        # Unpack from the API response wrapper ("data" key)
         result_data = res_json.get("data", res_json)
         
         assert result_data["symbol"] == "AAPL"
         assert "metrics" in result_data
         assert "Sharpe Ratio" in result_data["metrics"]
     else:
-        # Graceful handling if data file is missing in test environment
         assert response.status_code == 404
